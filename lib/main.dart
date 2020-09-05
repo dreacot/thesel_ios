@@ -84,7 +84,7 @@ class _BottomAppbarExampleState extends State<BottomAppbarExample> {
                         child: CircleAvatar(backgroundImage: AssetImage('assets/images/thesel.png')),
                       ),
                       SizedBox(
-                          width: 235,
+                          width: 275,
                           child: TextField(
                             controller: nameController,
                             decoration: InputDecoration(
@@ -104,10 +104,6 @@ class _BottomAppbarExampleState extends State<BottomAppbarExample> {
                             },
                           )
                       ),
-                      Container(
-                        margin: EdgeInsets.all(20),
-                        child: Text(fullName),
-                      )
                     ],
                   ),
                   IconButton(
