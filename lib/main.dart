@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:theselios/helper/Colors.dart';
+import 'package:theselios/helper/colors.dart';
 
 void main() {
   runApp(MyApp());
@@ -34,6 +34,8 @@ class _BottomAppbarExampleState extends State<BottomAppbarExample> {
   FloatingActionButtonLocation _fabLocation =
       FloatingActionButtonLocation.endDocked;
   bool _isBottomBarNotched = true;
+  TextEditingController nameController = TextEditingController();
+  String fullName = '';
 
   @override
   Widget build(BuildContext context) {
@@ -46,12 +48,162 @@ class _BottomAppbarExampleState extends State<BottomAppbarExample> {
             color: PrimaryColor
         ),),
       ),
-      body: Center(
+      body: Container(
+        color: PostColor,
+        height:480,
+        margin: EdgeInsets.only(bottom: 10),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              'This is the homepage',
+            Container(
+              color: Colors.white, height: 60,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  Row(
+                      children: <Widget>[
+                        CircleAvatar(backgroundImage: AssetImage('assets/images/thesel.png')),
+                        CircleAvatar(backgroundImage: AssetImage('assets/images/thesel.png')),
+                        CircleAvatar(backgroundImage: AssetImage('assets/images/thesel.png')),
+                        CircleAvatar(backgroundImage: AssetImage('assets/images/thesel.png')),
+                      ]
+                  ),
+                  Divider(color: PrimaryColor,),
+                ],
+              ),
+            ),
+            Container(
+              color: Colors.white,
+              padding: EdgeInsets.all(5),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Row(
+                    children: <Widget>[
+                      Container(
+                        margin: EdgeInsets.only(right: 30),
+                        child: CircleAvatar(backgroundImage: AssetImage('assets/images/thesel.png')),
+                      ),
+                      SizedBox(
+                          width: 235,
+                          child: TextField(
+                            controller: nameController,
+                            decoration: InputDecoration(
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.all(Radius.circular(50)),
+                                borderSide: BorderSide(width: 2,color: Colors.orangeAccent),
+                              ),
+                              labelText: "What's on your mind?",
+                            ),
+                            onChanged: (text) {
+                              setState(() {
+                                fullName = text;
+                                //you can access nameController in its scope to get
+                                // the value of text entered as shown below
+                                //fullName = nameController.text;
+                              });
+                            },
+                          )
+                      ),
+                      Container(
+                        margin: EdgeInsets.all(20),
+                        child: Text(fullName),
+                      )
+                    ],
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.account_balance_wallet),
+                    onPressed: () {
+                    },
+                  )
+                ],
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(left: 10, top: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Row(
+                    children: <Widget>[
+                      Text("Anonymousyl7n", style: TextStyle(fontSize: 22, color: Colors.yellow))
+                    ],
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.more_vert),
+                    color: Colors.white,
+                    onPressed: () {
+                    },
+                  )
+                ],
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(left: 10, top: 10, bottom: 10),
+              child: Row(
+                  children: <Widget> [
+                    Column(
+                      children: <Widget>[
+                        Container(
+                          height: 35,
+                          child: CircleAvatar(backgroundImage: AssetImage('assets/images/thesel.png')),
+                        ),
+                        Container()
+                      ],
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(left: 10),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text("Confused", style: TextStyle(fontSize: 18, color: Colors.white, backgroundColor: Colors.black),),
+                          Container(
+                            child: Row(
+                              children: <Widget>[
+                              Text("07/08/2020", style: TextStyle(fontSize: 18, color: Colors.white)),
+                              Text("  "),
+                              Text("01:32 am", style: TextStyle(fontSize: 18, color: Colors.white)),
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
+                    )
+                  ]
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(left: 10, top: 10, bottom: 10),
+              child: Column(
+                  children: <Widget> [
+                    Text("I've been postponing my business thinking that everything else is more important but I haven't done anything that I postponed it for. I'm trying to balance it but it just leads to more confusion", style: TextStyle(fontSize: 18, color: Colors.white)),
+                  ]
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(left: 10, top: 10, bottom: 10),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  Row(
+                      children: <Widget>[
+                        Text("2 ", style: TextStyle(fontSize: 18, color: Colors.white)),
+                        Icon(Icons.favorite, color: Colors.white, size: 30,),
+                        Text("    "),
+                        Text("7 ", style: TextStyle(fontSize: 18, color: Colors.white)),
+                        Icon(Icons.comment, color: Colors.white, size: 30,),
+                      ]
+                  ),
+                  Divider(color: PrimaryColor,),
+                ],
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(left: 10),
+              child: Row(
+                  children: <Widget> [
+                    Text("Business", style: TextStyle(fontSize: 18, color: Colors.white)),
+                  ]
+              ),
             ),
           ],
         ),
